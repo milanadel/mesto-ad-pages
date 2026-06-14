@@ -8,9 +8,8 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mesto</title>
-    <link rel="icon" href="./assets/logo-C_QQpFK1.svg" type="image/svg+xml" />
-    <script type="module" crossorigin src="./assets/index-C4I2HmM4.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DKwl_nIp.css">
+    <script type="module" crossorigin src="./assets/index-BEGOQbDX.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B4Pi-Bde.css">
   </head>
   <body class="page">
     <div class="page__content">
@@ -23,11 +22,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <div class="profile__image"></div>
+          <div
+            class="profile__image"
+            style="background-image: url('./assets/avatar-jDl9RI_U.jpg')"
+          ></div>
           <div class="profile__info">
-            <h1 class="profile__title"></h1>
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
-            <p class="profile__description"></p>
+            <p class="profile__description">Исследователь океана</p>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
@@ -38,7 +40,6 @@
       <footer class="footer page__section">
         <p class="footer__copyright">© 2025 Mesto Russia</p>
       </footer>
-
       <div class="popup popup_type_edit">
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
@@ -47,42 +48,40 @@
             <label class="popup__label">
               <input
                 type="text"
-                name="user-name"
-                id="user-name"
+                name="userName"
+                id="owner-name"
                 class="popup__input popup__input_type_name"
                 placeholder="Имя"
-                minlength="2"
-                maxlength="40"
-                pattern="[A-Za-zА-Яа-яЁё \-]+"
+                pattern="^[a-zA-Zа-яА-ЯёЁ\- ]+$"
                 data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
                 required
+                minlength="2"
+                maxlength="40"
               />
-              <span class="popup__error" id="user-name-error"></span>
+              <span class="popup__error" id="owner-name-error"></span>
             </label>
             <label class="popup__label">
               <input
                 type="text"
-                name="user-description"
-                id="user-description"
+                name="userDescription"
+                id="owner-description"
                 class="popup__input popup__input_type_description"
                 placeholder="Занятие"
+                required
                 minlength="2"
                 maxlength="200"
-                required
               />
-              <span class="popup__error" id="user-description-error"></span>
+              <span class="popup__error" id="owner-description-error"></span>
             </label>
             <button
               type="submit"
               class="button popup__button popup__button_disabled"
-              disabled
             >
               Сохранить
             </button>
           </form>
         </div>
       </div>
-
       <div class="popup popup_type_new-card">
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
@@ -91,22 +90,22 @@
             <label class="popup__label">
               <input
                 type="text"
-                name="place-name"
+                name="name"
                 id="place-name"
                 class="popup__input popup__input_type_card-name"
                 placeholder="Название"
+                required
                 minlength="2"
                 maxlength="30"
-                pattern="[A-Za-zА-Яа-яЁё \-]+"
+                pattern="^[a-zA-Zа-яА-ЯёЁ\- ]+$"
                 data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
-                required
               />
               <span class="popup__error" id="place-name-error"></span>
             </label>
             <label class="popup__label">
               <input
                 type="url"
-                name="place-link"
+                name="link"
                 id="place-link"
                 class="popup__input popup__input_type_url"
                 placeholder="Ссылка на картинку"
@@ -138,16 +137,10 @@
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Вы уверены?</h3>
           <form class="popup__form" name="remove-card" novalidate>
-            <button
-              type="submit"
-              class="button popup__button"
-            >
-              Да
-            </button>
+            <button type="submit" class="button popup__button">Да</button>
           </form>
         </div>
       </div>
-
       <div class="popup popup_type_edit-avatar">
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
@@ -156,18 +149,17 @@
             <label class="popup__label">
               <input
                 type="url"
-                name="user-avatar"
-                id="user-avatar"
+                name="avatar"
+                id="owner-avatar"
                 class="popup__input popup__input_type_avatar"
                 placeholder="Ссылка на изображение"
                 required
               />
-              <span class="popup__error" id="user-avatar-error"></span>
+              <span class="popup__error" id="owner-avatar-error"></span>
             </label>
             <button
               type="submit"
               class="button popup__button popup__button_disabled"
-              disabled
             >
               Сохранить
             </button>
@@ -175,26 +167,33 @@
         </div>
       </div>
 
+      <!--Попап для реализации задания 9-го спринта-->
       <div class="popup popup_type_info">
         <div class="popup__content popup__content_content_info">
           <button type="button" class="popup__close"></button>
-          <h3 class="popup__title">Статистика пользователей</h3>
+          <h3 class="popup__title">Заголовок окна</h3>
           <dl class="popup__info"></dl>
 
-          <h4 class="popup__text">Все пользователи:</h4>
+          <h4 class="popup__text">Список</h4>
           <ul class="popup__list"></ul>
         </div>
       </div>
-
     </div>
 
 
+    <!--Темплейт для создания карточек-->
     <template id="card-template">
       <li class="places__item card">
         <img class="card__image" src="" alt="" />
         <div class="card__control">
-          <!--<button type="button" class="card__control-button card__control-button_type_info"></button>-->
-          <button type="button" class="card__control-button card__control-button_type_delete"></button>
+          <!-- <button
+            type="button"
+            class="card__control-button card__control-button_type_info"
+          ></button> -->
+          <button
+            type="button"
+            class="card__control-button card__control-button_type_delete"
+          ></button>
         </div>
         <div class="card__description">
           <h2 class="card__title"></h2>
@@ -206,6 +205,7 @@
       </li>
     </template>
 
+    <!--Темплейт для создания строк с показателями в попапе 9-й спринт -->
     <template id="popup-info-definition-template">
       <div class="popup__info-item">
         <dt class="popup__info-term"></dt>
@@ -213,6 +213,7 @@
       </div>
     </template>
 
+    <!--Темплейт для заполнения списка определений в попапе 9-й спринт -->
     <template id="popup-info-user-preview-template">
       <li class="popup__list-item popup__list-item_type_badge"></li>
     </template>
